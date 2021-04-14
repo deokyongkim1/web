@@ -25,7 +25,7 @@ public class UserListServlet extends HttpServlet {
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
     List<User> userList = userDao.listUsers(0, 100);
-    out.println("<html><body>");
+    out.println("<html><body><h3>사용자 목록</h3>");
     for (User user : userList)
       out.format("<p>%s</p>\n", user);
     out.println("</body></html>");

@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/helloServlet")
-public class HelloServlet extends HttpServlet {
+@WebServlet("/user/userFormServlet")
+public class UserFormServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException {
@@ -19,7 +19,13 @@ public class HelloServlet extends HttpServlet {
         <!DOCTYPE html>
         <html>
         <body>
-          <h1>Hello, 서블릿.</h1>
+          <h3>사용자 등록</h3>
+          <form action="addUserServlet" method="post">
+            <p><input type="email" name="email" placeholder="이메일" required /></p>
+            <p><input type="password" name="password" placeholder="비밀번호" required /></p>
+            <p><input type="text" name="name" placeholder="이름" required /></p>
+            <p><button type="submit">저장</button></p> 
+          </form>
         </body>
         </html>
         """);
