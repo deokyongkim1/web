@@ -1,5 +1,6 @@
-package kr.mjc.jacob.web.model1;
+package kr.mjc.jacob.web;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,7 @@ import java.io.PrintWriter;
 public class HelloServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws IOException {
+      throws IOException, ServletException {
 
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();

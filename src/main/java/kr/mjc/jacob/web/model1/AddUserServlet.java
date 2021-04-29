@@ -2,6 +2,7 @@ package kr.mjc.jacob.web.model1;
 
 import kr.mjc.jacob.web.dao.User;
 import kr.mjc.jacob.web.dao.UserDao;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/user/addUserServlet")
+@Slf4j
+@WebServlet("/model1/user/addUser")
 public class AddUserServlet extends HttpServlet {
 
   @Autowired
@@ -25,7 +27,8 @@ public class AddUserServlet extends HttpServlet {
     user.setEmail(request.getParameter("email"));
     user.setPassword(request.getParameter("password"));
     user.setName(request.getParameter("name"));
+
     userDao.addUser(user);
-    response.sendRedirect("/user/userListServlet");
+    response.sendRedirect(request.getContextPath() + "/model1/user/userList");
   }
 }
