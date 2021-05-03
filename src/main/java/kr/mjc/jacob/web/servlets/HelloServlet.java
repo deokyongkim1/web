@@ -1,4 +1,4 @@
-package kr.mjc.jacob.web;
+package kr.mjc.jacob.web.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

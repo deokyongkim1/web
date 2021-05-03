@@ -1,4 +1,3 @@
-<%@ page import="kr.mjc.jacob.web.dao.User" %>
 <!DOCTYPE html>
 <html>
 <body>
