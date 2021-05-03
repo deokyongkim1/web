@@ -31,15 +31,15 @@ public class ArticleDao {
       update article set title=:title, content=:content
       where articleId=:articleId and userId=:userId""";
 
-  private static final String DELETE_ARTICLE
-      = "delete from article where articleId=:articleId and userId=:userId";
+  private static final String DELETE_ARTICLE =
+      "delete from article where articleId=:articleId and userId=:userId";
 
   private JdbcTemplate jdbcTemplate;
 
   private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-  private RowMapper<Article> rowMapper = new BeanPropertyRowMapper<>(
-      Article.class);
+  private RowMapper<Article> rowMapper =
+      new BeanPropertyRowMapper<>(Article.class);
 
   public ArticleDao(JdbcTemplate jdbcTemplate,
                     NamedParameterJdbcTemplate namedParameterJdbcTemplate) {

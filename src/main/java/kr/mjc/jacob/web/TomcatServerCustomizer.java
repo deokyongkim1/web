@@ -28,15 +28,16 @@ public class TomcatServerCustomizer
       jspPropertyGroup.addUrlPattern("*.jsp");
       jspPropertyGroup.addUrlPattern("*.html");
       jspPropertyGroup.setPageEncoding("UTF-8");
-      JspPropertyGroupDescriptor jspPropertyGroupDescriptor
-          = new JspPropertyGroupDescriptorImpl(jspPropertyGroup);
+      JspPropertyGroupDescriptor jspPropertyGroupDescriptor =
+          new JspPropertyGroupDescriptorImpl(jspPropertyGroup);
 
-      Collection<JspPropertyGroupDescriptor> jspPropertyGroupDescriptors
-          = new HashSet<>();
+      Collection<JspPropertyGroupDescriptor> jspPropertyGroupDescriptors =
+          new HashSet<>();
       jspPropertyGroupDescriptors.add(jspPropertyGroupDescriptor);
 
-      JspConfigDescriptor jspConfigDescriptor = new JspConfigDescriptorImpl(
-          jspPropertyGroupDescriptors, new HashSet<>());
+      JspConfigDescriptor jspConfigDescriptor =
+          new JspConfigDescriptorImpl(jspPropertyGroupDescriptors,
+              new HashSet<>());
       context.setJspConfigDescriptor(jspConfigDescriptor);
     });
     factory.setTomcatContextCustomizers(col);
