@@ -26,8 +26,4 @@ dependencies {
 
   // MariaDB JDBC Driver
   runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-
-  // OWASP Encoder (XSS filter)
-  implementation 'org.owasp.encoder:encoder:+'
-  implementation 'org.owasp.encoder:encoder-jsp:+'
 }

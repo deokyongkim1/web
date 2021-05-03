@@ -1,8 +1,7 @@
-package kr.mjc.jacob.web.model1;
+package kr.mjc.jacob.web.model1.user;
 
 import kr.mjc.jacob.web.dao.User;
 import kr.mjc.jacob.web.dao.UserDao;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletException;
@@ -10,13 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
-@Slf4j
-@WebServlet("/model1/user/userInfo")
-public class UserInfoServlet extends HttpServlet {
+@WebServlet("/model1/user/userList")
+public class UserListServlet extends HttpServlet {
 
   @Autowired
   private UserDao userDao;
@@ -26,12 +24,10 @@ public class UserInfoServlet extends HttpServlet {
       throws ServletException, IOException {
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
-
-    HttpSession session = request.getSession();
-    User user = (User) session.getAttribute("USER");
-
-    out.println("<html><body><h3>사용자 정보</h3>");
-    out.format("<p>%s</p>", user);
+    List<User> userList = userDao.listUsers(0, 100);
+    out.println("<html><body><h3>사용자 목록</h3>");
+    for (User user : userList)
+      out.format("<p>%s</p>\n", user);
     out.println("</body></html>");
     out.close();
   }

@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
+/**
+ * 톰캣 서버 커스터마이저. JSP와 HTML을 UTF-8으로 인코딩한다.
+ */
 @Component
 @Slf4j
 public class TomcatServerCustomizer
