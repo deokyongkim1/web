@@ -1,4 +1,4 @@
-package kr.mjc.jacob.web.mvc.user;
+package kr.mjc.jacob.web.mvc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/mvc/user/*")
+@WebServlet("/mvc/*")
 public class DispatcherServlet extends HttpServlet {
 
   @Autowired
@@ -28,6 +28,7 @@ public class DispatcherServlet extends HttpServlet {
       case "/mvc/user/userInfo" -> userController.userInfo(request, response);
       case "/mvc/user/addUser" -> userController.addUser(request, response);
       case "/mvc/user/login" -> userController.login(request, response);
+      default -> response.sendError(HttpServletResponse.SC_NOT_FOUND);
     }
   }
 }
