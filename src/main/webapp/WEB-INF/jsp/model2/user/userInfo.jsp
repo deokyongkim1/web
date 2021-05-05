@@ -1,8 +1,10 @@
+<%@ page import="kr.mjc.jacob.web.dao.User" %>
 <!DOCTYPE html>
+<% User user = (User) session.getAttribute("USER"); %>
 <html>
 <body>
 <h3>사용자 정보</h3>
-<p><%= session.getAttribute("USER") %>
+<p><%= user %>
 </p>
 </body>
 </html>

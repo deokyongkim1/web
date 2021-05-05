@@ -1,5 +1,6 @@
 package kr.mjc.jacob.web.model2.user;
 
+import kr.mjc.jacob.web.dao.User;
 import kr.mjc.jacob.web.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/model2/user/userList")
 public class UserListServlet extends HttpServlet {
@@ -19,7 +21,8 @@ public class UserListServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    request.setAttribute("userList", userDao.listUsers(0, 100));
+    List<User> userList = userDao.listUsers(0, 100);
+    request.setAttribute("userList", userList);
 
     request.getRequestDispatcher("/WEB-INF/jsp/model2/user/userList.jsp")
         .forward(request, response);
