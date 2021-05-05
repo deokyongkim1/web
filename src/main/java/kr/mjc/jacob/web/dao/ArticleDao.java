@@ -1,5 +1,6 @@
 package kr.mjc.jacob.web.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -41,30 +42,46 @@ public class ArticleDao {
   private RowMapper<Article> rowMapper =
       new BeanPropertyRowMapper<>(Article.class);
 
+  @Autowired
   public ArticleDao(JdbcTemplate jdbcTemplate,
                     NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
     this.jdbcTemplate = jdbcTemplate;
     this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
   }
 
+  /**
+   * 게시글 목록
+   */
   public List<Article> listArticles(int offset, int count) {
     return jdbcTemplate.query(LIST_ARTICLES, rowMapper, offset, count);
   }
 
+  /**
+   * 게시글 조회
+   */
   public Article getArticle(int articleId) {
     return jdbcTemplate.queryForObject(GET_ARTICLE, rowMapper, articleId);
   }
 
+  /**
+   * 게시글 등록
+   */
   public void addArticle(Article article) {
     namedParameterJdbcTemplate
         .update(ADD_ARTICLE, new BeanPropertySqlParameterSource(article));
   }
 
+  /**
+   * 게시글 수정
+   */
   public int updateArticle(Article article) {
     return namedParameterJdbcTemplate
         .update(UPDATE_ARTICLE, new BeanPropertySqlParameterSource(article));
   }
 
+  /**
+   * 게시글 삭제
+   */
   public int deleteArticle(int articleId, int userId) {
     Map<String, Object> params = new HashMap<>();
     params.put("articleId", articleId);
