@@ -1,4 +1,4 @@
-package kr.mjc.jacob.web.mvc.user;
+package kr.mjc.jacob.web.mvc;
 
 import kr.mjc.jacob.web.dao.User;
 import kr.mjc.jacob.web.dao.UserDao;
